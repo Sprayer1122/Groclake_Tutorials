@@ -49,7 +49,7 @@ https://plotch-ai.gitbook.io/groclake-by-plotch.ai/installation-and-guide
 Learn more about the tools with these tutorial videos:
 - **Datalake**: https://www.youtube.com/watch?v=ODIysLHcfe8
 - **Modellake**: https://www.youtube.com/watch?v=kDjyd5ctvh0&t=1s
-- **Vectorlake**: *(Link coming soon)*
+- **Vectorlake**: https://www.youtube.com/watch?v=LBVJYdl1wPg
 
 ---
 
