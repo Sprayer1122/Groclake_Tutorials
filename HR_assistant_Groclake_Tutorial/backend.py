@@ -1,8 +1,8 @@
 import os
 from flask import Flask, request, jsonify
-from groclake.vectorlake import VectorLake
-from groclake.datalake import DataLake
-from groclake.modellake import ModelLake
+from groclake.vectorlake import Vectorlake
+from groclake.datalake import Datalake
+from groclake.modellake import Modellake
 
 # Flask App
 app = Flask(__name__)
@@ -16,9 +16,9 @@ os.environ['GROCLAKE_API_KEY'] = GROCLAKE_API_KEY
 os.environ['GROCLAKE_ACCOUNT_ID'] = GROCLAKE_ACCOUNT_ID
 
 # Initialize components
-vectorlake = VectorLake()
-datalake = DataLake()
-modellake = ModelLake()
+vectorlake = Vectorlake()
+datalake = Datalake()
+modellake = Modellake()
 
 # Global variables to store IDs
 datalake_id = None
@@ -60,7 +60,7 @@ def upload_document():
             "document_type": "url",
             "document_data": document_url
         }
-        data_push = datalake.push(payload_push)
+        data_push = datalake.document_push(payload_push)
         document_id = data_push.get("document_id")
         if not document_id:
             return jsonify({"error": "Failed to push document."}), 500
@@ -74,7 +74,7 @@ def upload_document():
             "fetch_format": "chunk",
             "chunk_size": "500"
         }
-        data_fetch = datalake.fetch(payload_fetch)
+        data_fetch = datalake.document_fetch(payload_fetch)
         document_chunks = data_fetch.get("document_data", [])
         print(f"Document fetched successfully. Total chunks: {len(document_chunks)}")
 
